@@ -1,0 +1,62 @@
+<!--
+  Generated template for the ObjetoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>objeto</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngIf="objetoA">
+    <ion-card>
+
+      <ion-card-content>
+        <div *ngIf="video">
+          <video width="100%" height="50%" controls="controls" preload="metadata" webkit-playsinline="webkit-playsinline" class="videoPlayer">
+            <source [src]="objetoA.manifest.url" [type]="format" />
+          </video>
+        </div>
+        <div *ngIf="audio">
+          <audio controls="controls" preload="metadata" webkit-playsinline="webkit-playsinline">
+            <source [src]="audioUri" [type]="format" />
+          </audio>
+        </div>
+        <div class="thumbs">
+          <ion-icon name="thumbs-up"></ion-icon>
+          <ion-icon name="thumbs-down"></ion-icon>
+        </div>
+        <ion-card-title>
+          {{objetoA.metadata.general.title.none}}
+        </ion-card-title>
+
+        <p>
+          {{objetoA.metadata.general.description.none}}
+        </p>
+      </ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-icon name="chatbubbles"></ion-icon> {{objetoA.social.comments}}
+          </ion-col>
+          <ion-col>
+            <ion-icon name="thumbs-up"></ion-icon> {{objetoA.social.score.count}}/{{objetoA.social.score.sum}}
+          </ion-col>
+          <ion-col>
+            <ion-icon name="eye"></ion-icon> {{objetoA.social.views}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="comentario">
+        <ion-textarea [(ngModel)]="comentario" placeholder="Escribe un comentario"></ion-textarea>
+      </div>
+      <button ion-button secondary (click)="enviarComentario()">Enviar comentario</button>
+    </ion-card>
+  </div>
+</ion-content>
